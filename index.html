@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Patrick</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --celeste: #b3e5fc;
+            --amarillo: #fff9c4;
+            --rojo: #ffcdd2;
+            --beige: #f5f5dc;
+            --vintage: #f4e4bc;
+        }
+
+        body {
+            background-color: var(--beige);
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #5d4037;
+        }
+
+        /* --- PANTALLA 1 --- */
+        #pantalla1 {
+            text-align: center;
+            transition: opacity 0.8s ease;
+        }
+
+        .titulo-brillante {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #81d4fa;
+            text-shadow: 0 0 10px #fff, 0 0 20px #b3e5fc;
+            animation: brillo 2s infinite alternate;
+            margin-bottom: 30px;
+        }
+
+        @keyframes brillo {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff9c4; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #ffcdd2, 0 0 40px #b3e5fc; }
+        }
+
+        .corazon-btn {
+            background: var(--rojo);
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            clip-path: path('M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.391 2.609-6 6-6 1.913 0 3.733.896 4.908 2.404l.092.118.092-.118c1.175-1.508 2.995-2.404 4.908-2.404 3.391 0 6 2.609 6 6 0 4.105-5.37 8.863-11 14.402z');
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 0 auto;
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            transform: scale(3); /* Ajuste para el tamaño del path */
+        }
+
+        .corazon-btn:hover { transform: scale(3.2); }
+
+        /* --- PANTALLA CONTRASEÑA --- */
+        #pantallaPassword {
+            display: none;
+            text-align: center;
+        }
+
+        .sobre-cerrado {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 20px;
+            border: 2px solid var(--celeste);
+            outline: none;
+            text-align: center;
+        }
+
+        /* --- CARTA VINTAGE --- */
+        #pantallaCarta {
+            display: none;
+            max-width: 500px;
+            width: 90%;
+            background: var(--vintage);
+            padding: 40px;
+            border: 10px double #d7ccc8;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            animation: openLetter 1.5s ease-out;
+        }
+
+        @keyframes openLetter {
+            from { transform: scaleY(0); opacity: 0; }
+            to { transform: scaleY(1); opacity: 1; }
+        }
+
+        .oso-tierno {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .dedicatoria-oso {
+            font-style: italic;
+            color: #8d6e63;
+            margin-bottom: 20px;
+        }
+
+        .texto-carta {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.6;
+            text-align: justify;
+            white-space: pre-line;
+        }
+
+        /* --- ANIMACIÓN FINAL --- */
+        .final-container {
+            margin-top: 30px;
+            position: relative;
+            height: 100px;
+        }
+
+        .nube {
+            font-size: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flotante {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            animation: fly 5s infinite ease-in-out;
+        }
+
+        @keyframes fly {
+            0% { transform: translate(-50%, 0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate(calc(-50% + var(--x)), -300px) scale(1.2); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="pantalla1">
+        <h1 class="titulo-brillante">Para mi amiguito Patrick</h1>
+        <button class="corazon-btn" onclick="irAPassword()">Presiona</button>
+    </div>
+
+    <div id="pantallaPassword">
+        <div class="sobre-cerrado">✉️</div>
+        <h3>Introduce la contraseña:</h3>
+        <input type="password" id="passInput" placeholder="Contraseña...">
+        <br><br>
+        <button onclick="verificarPass()" style="background:var(--celeste); border:none; padding:10px 20px; border-radius:15px; cursor:pointer;">Abrir</button>
+    </div>
+
+    <div id="pantallaCarta">
+        <div style="text-align: center;">
+            <div class="oso-tierno">🧸</div>
+            <p class="dedicatoria-oso">"Para ese amigo que siempre está para mí"</p>
+        </div>
+        
+        <div class="texto-carta">
+            <strong>Querido Patrick:</strong>
+
+            A veces el silencio no es olvido, sino un lugar donde uno va a reconstruirse. Me alejé no porque dejara de quererte como amigo, sino porque había batallas dentro de mí que no sabía cómo compartir.
+
+            He entendido que las personas que realmente importan no desaparecen con la distancia; permanecen como una luz tranquila en la memoria y en el corazón. Tú has sido eso para mí: apoyo sincero, compañía sin juicio, presencia firme cuando más lo necesité.
+
+            A veces me pesa haberme ido sin saber explicarme, pero también creo que volver es un acto de honestidad. Volver es reconocer lo valioso.
+
+            Siempre te he considerado mi amigo. Y aunque el tiempo cambie las formas, el cariño verdadero no se rompe: se transforma y madura.
+
+            Gracias por haber estado. Yo también estaré para ti. Siempre.
+
+            <strong>Con mucho cariño, Miles. 🤍</strong>
+        </div>
+
+        <div class="final-container">
+            <div class="nube" id="disparador">☁️</div>
+        </div>
+    </div>
+
+    <script>
+        function irAPassword() {
+            document.getElementById('pantalla1').style.display = 'none';
+            document.getElementById('pantallaPassword').style.display = 'block';
+        }
+
+        function verificarPass() {
+            const pass = document.getElementById('passInput').value.toLowerCase();
+            if (pass === 'pastrick') {
+                document.getElementById('pantallaPassword').style.display = 'none';
+                document.getElementById('pantallaCarta').style.display = 'block';
+                lanzarElementos();
+            } else {
+                alert("Contraseña incorrecta, intenta de nuevo 🌸");
+            }
+        }
+
+        function lanzarElementos() {
+            const contenedor = document.querySelector('.final-container');
+            const palabras = ['siempre', 'te', 'deseo', 'felicidad', 'infinita', 'Patrick', 'feliz', 'día', '🎈', '🧸', '💖'];
+            
+            palabras.forEach((texto, i) => {
+                setTimeout(() => {
+                    const span = document.createElement('span');
+                    span.className = 'flotante';
+                    span.innerText = texto;
+                    span.style.setProperty('--x', (Math.random() * 200 - 100) + 'px');
+                    span.style.color = ['#81d4fa', '#ff8a80', '#ffd54f'][i % 3];
+                    contenedor.appendChild(span);
+                }, i * 600);
+            });
+        }
+    </script>
+</body>
+</html>
